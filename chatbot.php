@@ -22,7 +22,7 @@ $user_name = $_SESSION["user_name"] ?? paramentros::DEFAULT_USER_NAME;
 
 // Função para gerar resposta usando IA
 function gerar_resposta_ia($message) {
-    $api_key = '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'; // chave de API da Hugging Face
+    $api_key = 'Sua chave aqui'; // chave de API da Hugging Face
     $url = 'https://api-inference.huggingface.co/models/gpt2'; // URL da API da Hugging Face
     
     $data = [
