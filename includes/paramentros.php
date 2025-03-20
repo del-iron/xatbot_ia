@@ -1,11 +1,12 @@
 <?php
+// Esta classe fornece métodos utilitários para carregar configurações e enviar respostas ao cliente.
 class paramentros {
     // Carrega as configurações do arquivo config.php
     private static $config;
-    // Carrega as configurações do arquivo config.php
+
     public static function load_config() {
         if (!self::$config) {
-            self::$config = include("config.php");
+            self::$config = include(__DIR__ . "/config.php"); // Caminho atualizado
         }
     }
 

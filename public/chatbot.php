@@ -1,8 +1,9 @@
 <?php
+// Este arquivo é o backend principal do chatbot. Ele processa mensagens do usuário, chama a API de IA e retorna respostas.
 header("Content-Type: text/plain");
 session_start();
 
-include("paramentros.php");
+include(__DIR__ . "/../includes/paramentros.php"); // Caminho atualizado
 
 // Inicializa variáveis de sessão
 function initialize_session() {
@@ -29,25 +30,28 @@ function get_user_name() {
 // Função para gerar resposta usando IA
 function gerar_resposta_ia($message) {
     $api_key = paramentros::get('api_key'); // Obtém a chave da API do config
-    if (!$api_key) {
-        error_log('API key não configurada.');
-        return null;
-    }
-
     $url = paramentros::get('api_url'); // Obtém a URL da API do config
+    // Prepara os dados com as colunas pergunta, resposta e contexto
     $data = [
+        // Define as entradas para a API
         'inputs' => [
+            // Define a pergunta como a mensagem do usuário
             'pergunta' => $message,
+            // Define o contexto como o contexto da sessão
             'contexto' => $_SESSION['contexto'] ?? '',
         ],
     ];
-
+    // Faz a requisição para a API
     $response = make_api_request($url, $data, $api_key);
-
+    // Verifica se a resposta está presente
     if (isset($response[0]['resposta'])) {
+        // Atualiza o contexto da sessão
         $_SESSION['contexto'] = $response[0]['contexto'] ?? '';
+        // Retorna a resposta gerada pela IA
         return $response[0]['resposta'];
+        // Retorna a resposta gerada pela IA
     } else {
+        // Loga o erro da resposta da API
         error_log('API Response Error: ' . print_r($response, true));
         return null;
     }
@@ -103,9 +107,14 @@ function simulate_delay($microseconds) {
 
 // Fluxo principal
 initialize_session();
+// Obtém a mensagem do usuário
 $message = get_user_message();
+// Obtém o nome do usuário
 $user_name = get_user_name();
+// Gera a resposta da IA
 $resposta = gerar_resposta_ia($message) ?? handle_default_response($user_name);
+// Simula atraso na resposta
 simulate_human_response();
+// Envia a resposta ao cliente
 paramentros::send_response($resposta);
 ?>

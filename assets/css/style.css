@@ -1,0 +1,160 @@
+/* Este arquivo contém os estilos CSS para o chatbot, incluindo layout e aparência visual. */
+
+/* Estilo geral do corpo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Botão flutuante para abrir o chat */
+#chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0073aa;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Contêiner principal do chat */
+#chat-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 320px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Cabeçalho do chat */
+#chat-header {
+    background: #0073aa;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: space-between;
+}
+
+/* Estilo para o lado esquerdo do cabeçalho */
+#chat-header-left {
+    display: flex;
+    align-items: center;
+}
+
+/* Imagem do avatar do bot no cabeçalho */
+#chat-header img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Título e status do chat */
+#chat-title {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo do status do chat */
+#chat-status {
+    font-size: 12px;
+    color: #d1e7fd;
+}
+
+/* Botão para fechar o chat */
+#close-chat {
+    background: white;
+    border: 2px solid #0073aa;
+    color: #0073aa;
+    font-size: 12px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Área de mensagens do chat */
+#chat-messages {
+    padding: 10px;
+    height: 250px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo geral das mensagens */
+.message {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+/* Estilo das mensagens do usuário */
+.user {
+    background: #d1e7fd;
+    align-self: flex-end;
+    text-align: right;
+}
+
+/* Estilo das mensagens do bot */
+.bot {
+    background: #f1f1f1;
+    align-self: flex-start;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+/* Imagem do avatar do bot nas mensagens */
+.bot img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* Área de entrada de texto */
+#chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+/* Campo de entrada de texto do usuário */
+#user-input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Botão de envio de mensagem */
+#send-button {
+    background: #0073aa;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
